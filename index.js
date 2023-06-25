@@ -11,20 +11,6 @@ let heightFactor = 5;
 let speedFactor = 1;
 let unsorted_array = new Array(numOfBars);
 
-var butts_algo=document.querySelectorAll(".algo button");
-function disable_buttons()
-{
-    for(var i=0;i<array.length;i++)
-    {
-        butts_algo[i].classList=[];
-        butts_algo[i].classList.add("butt_locked");
-
-        butts_algo[i].disabled=true;
-        inp_as.disabled=true;
-        inp_gen.disabled=true;
-        inp_aspeed.disabled=true;
-    }
-}
 slider.addEventListener("input", function () {
   numOfBars = slider.value;
   maxRange = slider.value;
@@ -99,10 +85,10 @@ async function bubbleSort(array) {
         array[j] = array[j + 1];//Swapping code in 3 lines
         array[j + 1] = temp;
         bars[j].style.height = array[j] * heightFactor + "px";
-        bars[j].style.backgroundColor = "#F86F03";
+        bars[j].style.backgroundColor = "green";
         //bars[j].innerText = array[j];
         bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-        bars[j + 1].style.backgroundColor = "#D3D04F";
+        bars[j + 1].style.backgroundColor = "red";
         //bars[j + 1].innerText = array[j + 1];
         await sleep(speedFactor); 
       }
