@@ -254,114 +254,14 @@ async function swap(array, i, j, bars) {
   return array;
 }
 
-//write mergeSort function
-async function mergeSort(arr) {
-  let bars = document.getElementsByClassName("bar");
-  if (arr.length < 2) {
-    return arr;
-  }
-  const middle = Math.floor(arr.length / 2);
-  const left = arr.slice(0, middle);
-  const right = arr.slice(middle);
-  let actualHalf = await mergeSort(left);
-  await mergeSort(right);
 
-  let i = 0;
-  let j = 0;
-  let k = 0;
-
-  while (i < left.length && j < right.length) {
-    if (left[i] < right[j]) {
-      arr[k] = left[i];
-      i++;
-      // bars[k].style.height = arr[k] * heightFactor + "px";
-      // bars[k].style.backgroundColor = "lightgreen";
-      // bars[k].innerText = arr[k];
-      //await sleep(speedFactor);
-    } else {
-      arr[k] = right[j];
-      j++;
-      // bars[k + middle].style.height = arr[k] * heightFactor + "px";
-      // bars[k + middle].style.backgroundColor = "yellow";
-      // bars[k].innerText = arr[k];
-      //await sleep(speedFactor);
-    }
-    //shift to right side
-    //console.log(k);
-    //bars[k].style.height = arr[k] * heightFactor + "px";
-    //bars[k].style.backgroundColor = "lightgreen";
-
-    // bars[k + middle].style.height = arr[k] * heightFactor + "px";
-    // bars[k + middle].style.backgroundColor = "yellow";
-
-    //visualize it for right and left side
-    bars[k].style.height = arr[k] * heightFactor + "px";
-    bars[k].style.backgroundColor = "lightgreen";
-    if (k + arr.length < bars.length) {
-      bars[k + arr.length].style.height = arr[k] * heightFactor + "px";
-      console.log(arr[k] * heightFactor);
-      bars[k + arr.length].style.backgroundColor = "yellow";
-    }
-    await sleep(speedFactor);
-    //bars[k].innerText = arr[k];
-
-    k++;
-  }
-
-  while (i < left.length) {
-    arr[k] = left[i];
-    bars[k].style.height = arr[k] * heightFactor + "px";
-    bars[k].style.backgroundColor = "lightgreen";
-    await sleep(speedFactor);
-    i++;
-    k++;
-  }
-
-  while (j < right.length) {
-    arr[k] = right[j];
-    bars[k].style.height = arr[k] * heightFactor + "px";
-    bars[k].style.backgroundColor = "lightgreen";
-    await sleep(speedFactor);
-    j++;
-    k++;
-  }
-
-  // for (let i = 0; i < arr.length; i++) {
-  //   bars[i].style.height = arr[i] * heightFactor + "px";
-  //   bars[i].style.backgroundColor = "lightgreen";
-  //   await sleep(speedFactor);
-  // }
-
-  for (let k = 0; k < bars.length; k++) {
-    bars[k].style.backgroundColor = "#C38154";
-  }
-
-  return arr;
-}
-
-function mergeSortD(arr, start, end) {
-  if (arr.length < 2) {
-    return arr;
-  }
-
-  let middle = Math.floor((start + end) / 2);
-  let left = arr.slice(start, middle);
-  let right = arr.slice(middle, end);
-
-  //mergeSort(left);
-  mergeSort(right);
-}
 
 sort_btn.addEventListener("click", function () {
   switch (algotouse) {
     case "bubble":
       bubbleSort(unsorted_array);
       break;
-    case "merge":
-        mergeSort(unsorted_array);
-        break;      
-      //console.log(mergeSort(unsorted_array));
-      break;
+    
     case "heap":
       HeapSort(unsorted_array);
       break;
